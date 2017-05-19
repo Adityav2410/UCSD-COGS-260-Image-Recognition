@@ -92,12 +92,12 @@ class Cifar:
                 yield np.copy(batchX),np.copy(batchY)
                 batchX = np.zeros((0,32,32,3))
                 batchY = np.zeros((0,10))
-                acurrIndex       = 0
+                currIndex       = 0
 
-    def train_next_batch(self,batchSize=10):
+    def train_next_batch(self,batchSize):
         self.batchSize = batchSize
         return self.trainGenerator.next()
 
-    def test_next_batch(self,batchSize=10):
+    def test_next_batch(self,batchSize):
         self.batchSize = batchSize
         return self.testGenerator.next()
