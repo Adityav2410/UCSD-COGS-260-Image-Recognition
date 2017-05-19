@@ -11,6 +11,9 @@ class Cifar:
         self.splitRatio = splitRatio
         self.fileList = ['data_batch_1','data_batch_2','data_batch_3','data_batch_4' , 'data_batch_5']
 
+        self.meanList = [125, 122, 113]
+        self.stdList  = [62.0, 61.0, 65.0]
+
         self.trX,self.teX,self.trY,self.teY = self.generateCifarData()
         self.trainGenerator = self.generateTrainData()
         self.testGenerator = self.generateTestData()
@@ -38,13 +41,20 @@ class Cifar:
         
         trainX = trainX.transpose([0,2,3,1]).astype("uint8")
         trainY = trainY.astype(int)
-        
+        trainX = self.normalizeData(trainX)
+                
         x_train, x_test, y_train, y_test = train_test_split( trainX, trainY, test_size=self.splitRatio, random_state = 42)
         
         print("Number of train examples: ",x_train.shape[0])
         print("Number of test examples: ",x_test.shape[0])
         return [x_train,x_test, y_train, y_test]
 
+
+    def normalizeData(self,trainX):
+        for i in range(3):
+            trainX[:,:,:,i] = trainX[:,:,:,i] - self.meanList[i]
+            trainX[:,:,:,i] = trainX[:,:,:,i] / self.meanList[i]
+        return(trainX)
 
     def generateTrainData(self):
 
@@ -94,10 +104,12 @@ class Cifar:
                 batchY = np.zeros((0,10))
                 currIndex       = 0
 
-    def train_next_batch(self,batchSize):
-        self.batchSize = batchSize
+    def train_next_batch(self,batchSize= None):
+        if batchSize is not None:
+            self.batchSize = batchSize
         return self.trainGenerator.next()
 
-    def test_next_batch(self,batchSize):
-        self.batchSize = batchSize
+    def test_next_batch(self,batchSize=None):
+        if batchSize is not None:
+            self.batchSize = batchSize
         return self.testGenerator.next()
