@@ -27,22 +27,38 @@ def max_pool_2x2(x,name="maxpool"):
     return tf.nn.max_pool(x,ksize=[1,2,2,1],
                          strides=[1,2,2,1],padding='SAME',name=name)
 def batch_norm(x, is_training=True,name="batch_norm"):
-    return slim.batch_norm(x, decay= 0.9, updates_collections= None, is_training= is_training,name=name)
+    return slim.batch_norm(x, decay= 0.9, updates_collections= None, is_training= is_training)
 
 
 def getTrainStep(cross_entropy,optimizerDict):
 	typeOptimizer = optimizerDict['type']
-	lr = optimizerDict['lr']
 	momentum = optimizerDict['momentum']
-
-	if typeOptimizer == 'SGD':
-		train_step = tf.train.GradientDescentOptimizer(learning_rate = lr).minimize(cross_entropy)
+	lr = optimizerDict['lr']
+	# if optimizerDict['dynamic'] == True:
+	# 	dynamic_lr = tf.placeholder(tf.float32)
+	# else:
+	# 	dynamic_lr = optimizerDict['lr']
+	# if typeOptimizer == 'SGD':
+			
+	# 	#global_step = tf.Variable(0, trainable=False)
+	# 	#starter_learning_rate = lr
+ #        #learning_rate = tf.train.exponential_decay(0.01, global_step,500,0.96,staircase=True)
+ #        #train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(cross_entropy,global_step=global_step)
+ #        train_step = tf.train.GradientDescentOptimizer(learning_rate = lr).minimize(cross_entropy)
 	if typeOptimizer == 'Nesterov':
 		train_step = tf.train.MomentumOptimizer(learning_rate = lr, momentum = momentum, use_nesterov=True).minimize(cross_entropy)
 	if typeOptimizer == 'RMSprop':
-		train_step = tf.train.RMSPropOptimizer(learning_rate = lr, decay=0.9, momentum=momentum).minimize(cross_entropy)
+		train_step = tf.train.RMSPropOptimizer(learning_rate = lr, decay=0.5, momentum=momentum).minimize(cross_entropy)
 	if typeOptimizer == 'AdaGrad':
-		train_step = tf.train.AdagradOptimizer(learning_rate=lr).minimize(cross_entropy)
+		train_step = tf.train.AdagradOptimizer(learning_rate = lr).minimize(cross_entropy)
+	if typeOptimizer == 'Adam':
+		train_step = tf.train.AdamOptimizer(learning_rate = lr).minimize(cross_entropy)
+
+
+	# if optimizerDict['dynamic'] == True:
+	# 	return([train_step,dynamic_lr])
+	# else:
+	# 	return(train_step)
 	return(train_step)
 
 
@@ -99,6 +115,11 @@ def buildFCmodel(optimizerDict,performBN = False):
 	# Define the loss and other optimization steps
 	cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_true, logits=y_pred))
 	train_step = getTrainStep(cross_entropy,optimizerDict)
+	# if optimizerDict['dynamic'] == True:
+	# 	[train_step,dynamic_lr] = getTrainStep(cross_entropy,optimizerDict)	
+	# else:
+	# 	train_step = getTrainStep(cross_entropy,optimizerDict)
+	
 	correct_prediction = tf.equal(tf.argmax(y_pred,1),tf.argmax(y_true,1))
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))
 
@@ -114,19 +135,12 @@ def buildFCmodel(optimizerDict,performBN = False):
 	fcModelParam['loss'] = cross_entropy
 	fcModelParam['train_step'] = train_step
 	fcModelParam['accuracy'] = accuracy
+	
+	# if optimizerDict['dynamic'] == True:
+	# 	fcModelParam['lr'] = dynamic_lr
+
 	return(fcModelParam)
 	
-
-
-
-
-
-
-
-
-
-
-
 
 
 def buildFCmodel1(optimizerDict,performBN = False):
@@ -193,14 +207,14 @@ def buildFCmodel1(optimizerDict,performBN = False):
 
 #sess.run(tf.global_variables_initializer())
 
-def trainModel(sess,modelParam,cifar,keep_prob = 1,iter=500, batchSize = 128):
+def trainModel(sess,modelParam,cifar,keep_prob = 1,nIter=500, batchSize = 128):
     train_loss = []
     test_loss = []
     train_accuracy = []
     test_accuracy  = []
 
     print("Training Network")
-    for i in range(iter):
+    for i in range(nIter):
         trX, trY = cifar.train_next_batch(batchSize)
 
         if( i%50 == 0):
@@ -232,6 +246,58 @@ def trainModel(sess,modelParam,cifar,keep_prob = 1,iter=500, batchSize = 128):
     plt.title('CNN training: loss vs epocs')
     plt.legend()
     plt.show()
+    return([train_loss,train_accuracy,test_loss,test_accuracy])
+
+# def trainModel(sess,modelParam,cifar,keep_prob = 1,nEpoc=10, batchSize = 128, dynamic=False, lr = 0.01):
+#     train_loss = []
+#     test_loss = []
+#     train_accuracy = []
+#     test_accuracy  = []
+#     nTrainData = cifar.nTrainData
+#     nIter = int(nTrainData/batchSize)
+
+#     print("Training Network")
+#     for epoc in range(nEpoc):
+# 	    for iter in range(nIter):
+# 	        trX, trY = cifar.train_next_batch(batchSize)
+
+# 	        if( iter%100 == 0):
+# 	            epoc_loss,epoc_accuracy = sess.run(  [modelParam['loss'],modelParam['accuracy']],      \
+# 	                                                    feed_dict={modelParam['x']:trX,modelParam['y_true']:trY,modelParam['keep_prob']:keep_prob}
+# 	                                                 )
+# 	            train_loss.append(epoc_loss)
+# 	            train_accuracy.append(epoc_accuracy)
+	            
+# 	            teX,teY = cifar.test_next_batch(batchSize)
+# 	            epoc_loss,epoc_accuracy = sess.run(  [modelParam['loss'],modelParam['accuracy']],      \
+# 	                                                    feed_dict={modelParam['x']:teX,modelParam['y_true']:teY,modelParam['keep_prob']:1}
+# 	                                                 )
+# 	            test_loss.append(epoc_loss)
+# 	            test_accuracy.append(epoc_accuracy)
+# 	            print("Epoc: %d \t Iter: %d, \t Accuracy: %.2f \t Train Loss: %.2f \t Test Loss: %.2f "%(epoc,int(iter/100),train_accuracy[-1],train_loss[-1],test_loss[-1]))
+
+# 		    if dynamic == True:
+# 				modelParam['train_step'].run(feed_dict={modelParam['x']:trX,modelParam['y_true']:trY,modelParam['keep_prob']:keep_prob,modelParam['lr']:lr})
+# 		    else:
+# 		    	modelParam['train_step'].run(feed_dict={modelParam['x']:trX,modelParam['y_true']:trY,modelParam['keep_prob']:keep_prob})
+
+# 		if dynamic == True:
+# 			lr = lr/2
+
+
+# 		#print("Epoc: %d, \t Accuracy: %.2f , \t Train Loss: %.2f, \t Test Loss: %.2f "%(epoc,train_accuracy[-1],train_loss[-1],test_loss[-1]))
+ 
+#     print("Test Complete.")
+#     teX,teY = cifar.test_next_batch(1000)
+#     print(" Accuracy: %g"%modelParam['accuracy'].eval(feed_dict={modelParam['x']:teX,modelParam['y_true']:teY,modelParam['keep_prob']:1.0}))
+
+#     legend1, = plt.plot(train_loss,label='Train loss')
+#     legend2, = plt.plot(test_loss,label='Test loss')
+#     plt.xlabel('Iterations(x100)')
+#     plt.ylabel('Loss')
+#     plt.title('CNN training: loss vs epocs')
+#     plt.legend()
+#     plt.show()
 
 
 def predict(sess,modelParam,x,y_true):

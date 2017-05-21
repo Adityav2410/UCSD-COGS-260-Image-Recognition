@@ -57,3 +57,13 @@ def scatterFeatures(featureLabels, i, j, trainData, plots, plotIndex):
     plots[plotIndex].set_ylabel(feature2_name)
 
     plots[plotIndex].legend(handles=[label1, label2])    
+
+
+def plotTrainTest(trainData, testData, graphTitle, graphXlabel,graphYlabel):
+    legend1, = plt.plot(trainData,label='Training')
+    legend2, = plt.plot(testData,label='Test')
+    plt.xlabel(graphXlabel)
+    plt.ylabel(graphYlabel)
+    plt.title(graphTitle)
+    plt.legend()
+    plt.show()
