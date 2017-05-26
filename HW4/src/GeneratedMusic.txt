@@ -1,0 +1,120 @@
+1. 
+
+Seed Sentence: 
+<start>
+X: 29
+T:Singi
+
+Generated Sequence: 
+
+<start>
+X: 29
+T:Singiseep
+% No)H
+% Notting
+"Gm//2 M2:|\
+P:|<Bdd|"
+d>N2A/f/2f/2|"E/2a/2|"D7"^g/2d/2A/2B/0|"/2B/2|"
+"d"A|A2"A"A4Bc|"G"GdB|"D"A "B7"B2B|"Dm"GEB/2|
+"D"G"G|"D" 4B:A "E3"c"B|"B
+|
+"C"d/2|"G",Ddee|"em"cB|"D2:.
+L::
+"be"Ae "b"fefe/2e/2A/2|"E"d2 a"A2B|"E"BAF||e
+|DG|"E,"ABdAd|"D"d/2A/2B/2|\
+"D"FG"B/2FB|"A"B3 afd>f "G2B|
+ :"C"F2a|"D"
+c:f|4
+"GGB|"G"B "C"D"B|"Dm"^GDA|"D7"G3 dB/2|"|"AG|
+|:""g""A|"D"B2 -:e"g|"B7"D2|"D"|"G"B|"D"Bd"A/2FB|"D7"d2 F2f/2A/2|":
+"Dz:4
+"D2B|"C"F "D"B cdc "D""|"D"d
+AG/0B/ud/2 /2|"D"d"F3"D"["F/4|"G"b>B|"ABGe B "G"B|c|"Em"Dd1"AA 3 Gg
+::
+|
+S|"D7"E" Rongz"g"F7"g"A"e\
+|"d"F|"BE|"D"2edB|"D"dcdB "B2""Ae"D"c"l,ab2 "e"tBBf=B|"F"D2^|"D"d"AB|"G"A3/2AB|"D"ECG|"AG|[
+:Ag|[3d|"D"ee "D"ta|"d"A/"G"B/2g/2 "C"E|"D"E3A|"AB|c2aoe^:|"a"A2c|"G
+%G2 e/e "Am"A7ab2d|"G"eg |"D"feg
+%:2cB/2B/2:"Bm[g3
+Sw>"""b"f DD||<end>
+
+
+2. 
+
+Seed Sentence: 
+<start>
+X: 13
+T:McElr
+
+Generated Sequence: 
+
+<start>
+X: 13
+T:McElr "D
+P:|"G"G/2 "E7"GB:|[1"DFAGBBdB[1/4/2F/2B/2|"A"gcB|"G"BF"GF"G2"GCGG^F1 [
+F
+B:#"f2"Da:d
+"A2(2
+|"C"
+S:"E7"EE-
+|\CAB|"G"GD2|GDB|"D"A clB|""G"e2a|"D"|"B|"G"d"c|"G"BdAe,abG""c"e3d dBE|"A1"GF"gGB|"C"z2A|"Em"|"G2B/2|"D"B/2 d/2e|"A/4l/2A/2e/2B/2|"G"B "D7"B|"G2:|
+"G2|"G"d2d|"Bm"gf|"f"b/2c/2b/2 "D/4 f|gh2|"Am"a2
+M:G
+"F"f>2|"d"dcd|"E"DG"D"F2A|"G"A2:|
+P:
+"A7"A7" "E7"D"D"d "2""E/1+"dbBA/2e"G_B|"A"fo2 "D"FGC"A/ccd e2w|"A"B/2B/2B|"Em"ABa|"G7"Be adB|"D"B/4c/2
+"]"B7"fed/2/2F/2|"D"Aef D3 eufc"Bce>d>e|"E"d|"G"c"B c/82dD2|"A"a2f|"A"B"c2e z"Ea e "D"G4|"g/2|"Bm"ca|a2E|"A"f2c|"B7"d3c "G"::|
+"C2"f2f2c |"D"
+"Ggd "B7"FBB|"D^/2
+"A3Bo2eB
+M:|"A7"E/2 f|"D"(3B2(lFD"Cmd|"D"d2|"D7m"B7egcd|
+"G" "CBA"Bc/2 "D""B"A|"G"dfB3FF_G"a/2|"
+fab][2"GD|"Bm"BraB|"D""A7"fft|e3/4d/2|"G"f2c Fe"a|"A"m"D"EF
+|:% NBseg|"
+"A7"G|"D"|"Bm"A/2|"G"gdK:G/2e/2d/4|/2c/4e/4 1a/2G/2c/2"A/2|"D"d2e/2|"G7/2 AF2|"C"ec|
+2/2B/2 "D"Ac|aF
+%G/2B/2GE|"C"d2T|"A7"AcBcB|"B|"D"f2|
+"D"f2"Ad|
+e|"D"g "A"Afg fBed3AC/2eBb|\
+|=g/2B/2|"A"B22|"D7
+
+
+3. 
+
+Seed Sentence: 
+<start>
+X: 252
+T:Ratt
+
+Generated Sequence: 
+
+<start>
+X: 252
+T:Ratt: e3B|"C7"Ac
+"D"G/2|
+D/8"e"Ac:|"G/2Gc/2AGG|"D7"BB|"d"B|"D"e2d "G"Bre3ld"11"f/2aB/2 B/2gf||"D"|"F:"fd aeN2E/2|"D"AGk B3"DF"d|BG/2|gB|"fb|"G"A/4|BAA|"
+MA7"E|"D"d4|"D"fg2|"B."e
+|:"C"g|dBDe/2F"D"bf/2"|"[4d/2E/2 "d"Dab1"Em"G"E|"Dm"e
+aA AGF2 H:|"E"dc"D"|"D"fA^ dB|"D"d|"D"A/2cG"e2f+"B"B|"G"B|"G"E|"G"|"BE"D2|"E"d"A:/2B/2|"D"d Bed|C/2|"d"dgbe'|2"d2AB|EGc|2 Dm|Bf= "B|"F"2B DA\
+L:|"A"c/si vo2f/2G/2|
+7"e
+|<e/2 dg:|
+"A"Bcdeb%|"A"A2|B2B|
+"D2"_B|"D"B|"G"c|"D"BAB|"G"B/2|"A"C/2|"G"
+L:[2 |"E"B
+S:AG2:|<eed|GG":"E"ec d42 f2"G/2 "D"F/2B/2A :A,gA/2B/2B|"G""E7"D"Cm"B"AB^ AF-|"B"A3f|"D"|/2 d"G"C/2c/2|"D"ff|
+%A2|"D"f Rac|"D"a2e2c|"G/2/2|"G"G2|"Dm"Bd"G/2a/2|"C"B|"G"BBb:|
+S:4/4e/4 "E7"E/2 Brf|"D"^d|"G"B/B|"D"/2"AA "D"/2:|"G"
+ E2:DD"Ed:|dB|
+f2e/2[:Aa|"D"ef "D"FDE|"G"ic|
+c:|
+"B"|Ba"n
+"B2 |
+"bbA|"E7"d2|"G2f|"A" E2D|"d"A2
+"E"d|"D"Bc2|"A"EcBcAe3G|"Gm"cdefg|"D"d2 "C"
+"C"G"
+"G"G|AE"G11/2c "D"E/2 d
+L/2d|"E7"AGand:f/4\/4e/2A/2a/2f/2|"D"(3d2f2"D"g2c|"A7"cd Bf2|"E7"EEFk"C"D|"E"dc|"Am"d"fed|"D7"E2 3
+
+
